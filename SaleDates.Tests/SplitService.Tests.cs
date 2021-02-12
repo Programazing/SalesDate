@@ -10,7 +10,8 @@ namespace SaleDates.Tests
         [Test]
         public void SplitService_IsTodayASaleDayForTheUser_ReturnsTrue_IfTheUser_IsInAValidDateRange()
         {
-            var sut = new Services.SplitService();
+            var split = new Services.SplitService();
+            var sut = new Splits.SaleDates(split);
 
             var repository = new Data.UserRepository();
             var jane = repository.GetUsers().Where(x => x.Name == "Jane Doe").FirstOrDefault();
@@ -21,7 +22,8 @@ namespace SaleDates.Tests
         [Test]
         public void SplitService_IsTodayASaleDayForTheUser_ReturnsFalse_IfTheUser_IsNotInAValidDateRange()
         {
-            var sut = new Services.SplitService();
+            var split = new Services.SplitService();
+            var sut = new Splits.SaleDates(split);
 
             var repository = new Data.UserRepository();
             var john = repository.GetUsers().Where(x => x.Name == "John Smith").FirstOrDefault();

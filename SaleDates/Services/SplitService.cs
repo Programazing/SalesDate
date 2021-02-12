@@ -3,6 +3,7 @@ using SaleDates.Models;
 using Splitio.Services.Client.Classes;
 using Splitio.Services.Client.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SaleDates.Services
@@ -27,16 +28,11 @@ namespace SaleDates.Services
             }
         }
 
-        public Task<bool> IsTodayASaleDayForTheUser(User user)
+        public Task<string> GetTreatment(string key, string feature, Dictionary<string, object> attributes)
         {
-            var treatment = SDK.GetTreatment(user.Name, "SaleDays", user.Attributes());
-            
-            if(treatment == "on")
-            {
-                return Task.FromResult(true);
-            }
+            var treatment = SDK.GetTreatment(key, feature, attributes);
 
-            return Task.FromResult(false);
+            return Task.FromResult(treatment);
         }
     }
 }
