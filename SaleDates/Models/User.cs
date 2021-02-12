@@ -7,6 +7,7 @@ namespace SaleDates.Models
     {
         public string ID { get; set; }
         public string Name { get; set; }
+        public bool ItsASaleDay { get; set; } = false;
 
         internal Dictionary<string, object> Attributes()
         {
@@ -23,7 +24,7 @@ namespace SaleDates.Models
 
         private static DateTime MoveUserOutsideValidDateRange()
         {
-            return DateTime.Now.AddDays(-5);
+            return DateTime.Now.AddDays(-10);
         }
     }
 }

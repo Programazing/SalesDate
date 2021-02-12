@@ -7,8 +7,17 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
 
-    @foreach (var item in Model.SaleDayMessage)
+    @foreach (var user in Model.Users)
     {
-        <p>@item</p>
+        @if(user.ItsASaleDay == true)
+        {
+            <img src="/images/sale.jpg" alt="Alternate Text" />
+            <p>It's a Sale Day for @user.Name!</p>
+        }
+        else
+        {
+            <p>It's not a Sale Day for @user.Name.</p>
+        }
+        <hr />
     }
 </div>
